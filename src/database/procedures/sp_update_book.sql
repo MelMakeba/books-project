@@ -27,7 +27,7 @@ BEGIN
     isbn = COALESCE(p_isbn, isbn),
     description = COALESCE(p_description, description),
     user_id = COALESCE(p_user_id, user_id)
-  WHERE id = p_id;
+  WHERE books_id = p_id;
   RETURN QUERY
   SELECT 
     books.id, 

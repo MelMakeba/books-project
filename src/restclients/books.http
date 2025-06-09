@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+###create a book
+POST {{baseUrl}}/books
+Content-Type: {{contentType}}
+
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "publication_year": 1925,
+  "isbn": "97808018601",
+  "description": "A novel about the American Dream",
+  "user_id": 1
+}
+
+###Get all books
+
+GET {{baseUrl}}/books
+
+###Get books with pagination
+GET {{baseUrl}}/books?page=1&limit=5
+
+###search books with a specific term
+GET {{baseUrl}}/books?searchTerm=great
+
+###Filter books by year range
+GET {{baseUrl}}/books?startYear=1920&endYear=1950
+
+###Get book by ID
+GET {{baseUrl}}/books/1
+
+###Get book by ISBN
+GET {{baseUrl}}/books/isbn/97808018601
+
+
+###Get book by user
+GET {{baseUrl}}/books/user/1
+
+###Update a book
+PUT {{baseUrl}}/books/1
+Content-Type: {{contentType}}
+
+{
+  "title": "The Great Gatsby (Updated)",
+  "description": "Updated description about the American Dream"
+}
+
+###Delete a book
+DELETE {{baseUrl}}/books/1
