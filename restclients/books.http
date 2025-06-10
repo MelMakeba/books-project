@@ -19,19 +19,19 @@ Content-Type: {{contentType}}
 GET {{baseUrl}}/books/all_books
 
 ###Get books with pagination
-GET {{baseUrl}}/books?page=1&limit=5
+GET {{baseUrl}}/books/all_books?page=1&limit=5
 
 ###search books with a specific term
-GET {{baseUrl}}/books?searchTerm=great
+GET {{baseUrl}}/books/all_books?searchTerm=To
 
 ###Filter books by year range
-GET {{baseUrl}}/books?startYear=1920&endYear=2000
+GET {{baseUrl}}/books/all_books?startYear=1920&endYear=2000
 
 ###Get book by ID
-GET {{baseUrl}}/books/1
+GET {{baseUrl}}/books/16
 
 ###Get book by ISBN
-GET {{baseUrl}}/books/isbn/97808018601
+GET {{baseUrl}}/books/isbn/9870789025
 
 
 ###Get book by user
@@ -42,8 +42,8 @@ PUT {{baseUrl}}/books/update/16
 Content-Type: {{contentType}}
 
 {
-  "title": "The Great Gatsby (Updated)",
-  "description": "Updated description about the American Dream"
+  "title": "The Great Gatsby (Update)",
+  "description": "A novel about the American Dream[Updated]"
 }
 
 ###Delete a book
