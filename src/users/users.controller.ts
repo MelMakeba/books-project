@@ -25,7 +25,7 @@ export class UsersController {
     private readonly responseService: ApiResponseService,
   ) {}
 
-  @Post()
+  @Post('create_user')
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createUserDto: CreateUserDto) {
     try {
@@ -44,7 +44,7 @@ export class UsersController {
     }
   }
 
-  @Get()
+  @Get('all_users')
   async findAll() {
     try {
       const users = await this.usersService.findAll();
@@ -59,7 +59,7 @@ export class UsersController {
     }
   }
 
-  @Get(':id')
+  @Get('id/:id')
   async findOne(@Param('id') id: string) {
     try {
       const user = await this.usersService.findOne(+id);
@@ -94,7 +94,7 @@ export class UsersController {
     }
   }
 
-  @Put(':id')
+  @Put('/update/:id')
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     try {
       const user = await this.usersService.update(+id, updateUserDto);
@@ -112,7 +112,7 @@ export class UsersController {
     }
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   async remove(@Param('id') id: string) {
     try {
       await this.usersService.remove(+id);

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ConnectionService } from 'src/database/connection.service';
 import { CreateUserDto } from './dtos/create_user.dto';

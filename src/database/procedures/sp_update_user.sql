@@ -1,42 +1,24 @@
-CREATE OR REPLACE FUNCTION update_user(
-  p_id INTEGER,
-  p_email VARCHAR(255) DEFAULT NULL,
-  p_password_hash VARCHAR(255) DEFAULT NULL,
-  p_first_name VARCHAR(100) DEFAULT NULL,
-  p_last_name VARCHAR(100) DEFAULT NULL,
-  p_is_active BOOLEAN DEFAULT NULL
+CREATE OR REPLACE PROCEDURE update_user(
+  p_id INT,
+  p_username VARCHAR,
+  p_email VARCHAR, 
+  p_password_hash VARCHAR,
+  p_first_name VARCHAR,
+  p_last_name VARCHAR,
+  p_is_active BOOLEAN
 )
-RETURNS TABLE (
-  id INTEGER,
-  username VARCHAR(50),
-  email VARCHAR(255),
-  first_name VARCHAR(100),
-  last_name VARCHAR(100),
-  is_active BOOLEAN,
-  created_at TIMESTAMP,
-  updated_at TIMESTAMP
-) AS $$
+LANGUAGE plpgsql
+AS $$
 BEGIN
-    UPDATE users
+  UPDATE users
   SET 
+    username = COALESCE(p_username, username),
     email = COALESCE(p_email, email),
     password_hash = COALESCE(p_password_hash, password_hash),
     first_name = COALESCE(p_first_name, first_name),
     last_name = COALESCE(p_last_name, last_name),
     is_active = COALESCE(p_is_active, is_active),
     updated_at = NOW()
-  WHERE id = p_id;
-RETURN QUERY
-  SELECT 
-    users.id, 
-    users.username, 
-    users.email, 
-    users.first_name, 
-    users.last_name, 
-    users.is_active, 
-    users.created_at, 
-    users.updated_at
-  FROM users
-  WHERE users.id = p_id;
+  WHERE users.id = p_id;  
 END;
-$$ LANGUAGE plpgsql;
+$$;

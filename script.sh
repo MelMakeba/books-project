@@ -1,4 +1,9 @@
 #!/bin/bash
+##Drop Database
+
+echo "Dropping database if exists..."
+
+psql -U postgres -h localhost -c "DROP DATABASE IF EXISTS book_catalog;"
 
 echo "Setting up Book Catalog DB....."
 

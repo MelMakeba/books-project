@@ -2,21 +2,21 @@
 @contentType = application/json
 
 ###create a book
-POST {{baseUrl}}/books
+POST {{baseUrl}}/books/create_book
 Content-Type: {{contentType}}
 
 {
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "publication_year": 1925,
-  "isbn": "97808018601",
-  "description": "A novel about the American Dream",
-  "user_id": 1
+  "title": "To kill a mockingbird 1",
+  "author": "Scott Fitzgerald",
+  "publication_year": 2000,
+  "isbn": "9870789025",
+  "description": "A novel about racial injustice",
+  "user_id": 2
 }
 
 ###Get all books
 
-GET {{baseUrl}}/books
+GET {{baseUrl}}/books/all_books
 
 ###Get books with pagination
 GET {{baseUrl}}/books?page=1&limit=5
@@ -25,7 +25,7 @@ GET {{baseUrl}}/books?page=1&limit=5
 GET {{baseUrl}}/books?searchTerm=great
 
 ###Filter books by year range
-GET {{baseUrl}}/books?startYear=1920&endYear=1950
+GET {{baseUrl}}/books?startYear=1920&endYear=2000
 
 ###Get book by ID
 GET {{baseUrl}}/books/1
@@ -35,10 +35,10 @@ GET {{baseUrl}}/books/isbn/97808018601
 
 
 ###Get book by user
-GET {{baseUrl}}/books/user/1
+GET {{baseUrl}}/books/user/2
 
 ###Update a book
-PUT {{baseUrl}}/books/1
+PUT {{baseUrl}}/books/update/16
 Content-Type: {{contentType}}
 
 {
@@ -47,4 +47,4 @@ Content-Type: {{contentType}}
 }
 
 ###Delete a book
-DELETE {{baseUrl}}/books/1
+DELETE {{baseUrl}}/books/delete/16

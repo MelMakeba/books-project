@@ -4,7 +4,7 @@
 
 ###Create a user
 
-POST {{baseUrl}}/users
+POST {{baseUrl}}/users/create_user
 Content-Type: {{contentType}}
 
 {
@@ -16,17 +16,17 @@ Content-Type: {{contentType}}
 }
 
 ###Get all users
-GET {{baseUrl}}/users
+GET {{baseUrl}}/users/all_users
 
 ###Get user by ID
-GET {{baseUrl}}/users/1
+GET {{baseUrl}}/users/id/4
 
 ###Get user by username
 GET {{baseUrl}}/users/username/tracywait
 
 
 ###Update a user
-PUT {{baseUrl}}/users/1
+PUT {{baseUrl}}/users/update/1
 Content-Type: {{contentType}}
 
 {
@@ -36,4 +36,4 @@ Content-Type: {{contentType}}
 }
 
 ###delete a user
-DELETE {{baseUrl}}/users/1
+DELETE {{baseUrl}}/users/delete/1

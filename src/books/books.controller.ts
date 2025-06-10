@@ -28,7 +28,7 @@ export class BooksController {
     private readonly responseService: ApiResponseService,
   ) {}
 
-  @Post()
+  @Post('create_book')
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createBookDto: CreateBookDto) {
     try {
@@ -39,7 +39,7 @@ export class BooksController {
     }
   }
 
-  @Get()
+  @Get('all_books')
   async findAll(@Query() filterDto: FilterBookDto): Promise<ApiResponse<any>> {
     try {
       const { books, total } = await this.booksService.findAll(filterDto);
@@ -95,7 +95,7 @@ export class BooksController {
     }
   }
 
-  @Put(':id')
+  @Put('update/:id')
   async update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
     try {
       const book = await this.booksService.update(+id, updateBookDto);
@@ -108,7 +108,7 @@ export class BooksController {
     }
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   async remove(@Param('id') id: string) {
     try {
       await this.booksService.remove(+id);
